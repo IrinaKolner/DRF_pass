@@ -1,4 +1,5 @@
 python -m pip install Pillow
 pip install psycopg2-binary
+pip install drf-writable-nested
 
 
