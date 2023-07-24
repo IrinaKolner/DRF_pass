@@ -16,16 +16,20 @@ class CoordsSerializer(serializers.ModelSerializer):
 
 
 class PhotoSerializer(serializers.ModelSerializer):
+    # pereval = serializers.PrimaryKeyRelatedField(queryset=Pereval_added.objects.all())
     class Meta:
         model = Photo
-        fields = ['data', 'title']
+        # fields = ['data', 'title', 'pereval']
+        fields = '__all__'
 
-
-class Pereval_addedSerializer(serializers.ModelSerializer):
+# submitData
+class Pereval_addedSerializer(WritableNestedModelSerializer, serializers.ModelSerializer):
     coords = CoordsSerializer()
-    photo = PhotoSerializer()
     # устанавливает инфу о текущем юзере
-    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    # user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    user = UsersSerializer()
+    # photos = PhotoSerializer(required=False)
+    photos = PhotoSerializer()
 
     class Meta:
         model = Pereval_added
@@ -34,8 +38,7 @@ class Pereval_addedSerializer(serializers.ModelSerializer):
 
 
 # чтобы можно было проверить все
-class PerevalSerializer(WritableNestedModelSerializer,
-                        serializers.ModelSerializer):
+class PerevalSerializer(WritableNestedModelSerializer, serializers.ModelSerializer):
     coords = CoordsSerializer()
     # photo = PhotoSerializer()
     user = UsersSerializer()

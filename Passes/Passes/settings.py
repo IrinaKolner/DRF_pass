@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'Passes.wsgi.application'
 #         'ENGINE': 'django.db.backends.postgresql',
 #         'HOST': os.getenv('FSTR_DB_HOST'),
 #         'PORT': os.getenv('FSTR_DB_PORT'),
-#         'NAME': 'pereval',
+#         'NAME': 'passes',
 #         'USER': os.getenv('FSTR_DB_LOGIN'),
 #         'PASSWORD': os.getenv('FSTR_DB_PASS'),
 #     }
@@ -101,7 +101,7 @@ WSGI_APPLICATION = 'Passes.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'pereval',
+        'NAME': 'passes',
         'USER': 'postgres',
         'PASSWORD': 'password',
         'HOST': '192.168.56.4',

@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from pereval.views import PerevalViewSet
+from pereval.views import PerevalViewSet, Pereval_addedAPICreate
 from rest_framework import routers
 
 router = routers.SimpleRouter()
@@ -25,6 +25,6 @@ router.register(r'pereval', PerevalViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('pereval.urls')),
     path('api/v1/', include(router.urls))
 ]
-

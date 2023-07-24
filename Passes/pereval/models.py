@@ -59,4 +59,6 @@ class Pereval_added(models.Model):
 
     user = models.ForeignKey(Users, on_delete=models.CASCADE)
     coords = models.OneToOneField(Coords, on_delete=models.CASCADE, default=None)
+    # ?????
     photos = models.ManyToManyField(Photo)
+
