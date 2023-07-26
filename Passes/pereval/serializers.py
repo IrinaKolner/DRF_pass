@@ -29,7 +29,7 @@ class Pereval_addedSerializer(WritableNestedModelSerializer, serializers.ModelSe
     # user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     user = UsersSerializer()
     # photos = PhotoSerializer(required=False)
-    photos = PhotoSerializer()
+    photo = PhotoSerializer()
 
     class Meta:
         model = Pereval_added
