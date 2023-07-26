@@ -6,7 +6,8 @@ from drf_writable_nested import WritableNestedModelSerializer
 class UsersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Users
-        fields = ['email', 'name', 'last_name', 'patronimic', 'phone']
+        # fields = ['email', 'name', 'last_name', 'patronimic', 'phone']
+        fields = '__all__'
 
 
 class CoordsSerializer(serializers.ModelSerializer):
@@ -19,8 +20,8 @@ class PhotoSerializer(serializers.ModelSerializer):
     # pereval = serializers.PrimaryKeyRelatedField(queryset=Pereval_added.objects.all())
     class Meta:
         model = Photo
-        # fields = ['data', 'title', 'pereval']
-        fields = '__all__'
+        fields = ['data', 'title']
+        # fields = '__all__'
 
 # submitData
 class Pereval_addedSerializer(WritableNestedModelSerializer, serializers.ModelSerializer):
@@ -29,12 +30,19 @@ class Pereval_addedSerializer(WritableNestedModelSerializer, serializers.ModelSe
     # user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     user = UsersSerializer()
     # photos = PhotoSerializer(required=False)
-    photo = PhotoSerializer()
+    photo = PhotoSerializer(required=False)
 
     class Meta:
         model = Pereval_added
         # статус сам должен автоматически выставиться на new
         exclude = ['add_time', 'status']
+
+    def create(self, validated_data):
+        photos_data = validated_data.pop('photos', [])
+        pereval = Pereval_added.objects.create(**validated_data)
+        for photo_data in photos_data:
+            Photo.objects.create(pereval=pereval, **photo_data)
+        return pereval
 
 
 # чтобы можно было проверить все
