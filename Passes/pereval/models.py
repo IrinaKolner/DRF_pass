@@ -13,15 +13,13 @@ class Users(models.Model):
 class Coords(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
-    height = models.FloatField()
-# ?    height = models.IntegerField()
+    height = models.IntegerField()
 
 
 class Photo(models.Model):
-    # data = models.ImageField(upload_to='images/', blank=True)
-    data = models.ImageField(upload_to='images/', blank=True)
+    data = models.URLField(blank=True, null=True)
     title = models.CharField(max_length=255)
-    pereval = models.ForeignKey("Pereval_added", on_delete=models.CASCADE, related_name='photos')
+    pereval = models.ForeignKey("Pereval_added", on_delete=models.CASCADE, related_name='photos', blank=True, null=True)
 
 
 class Pereval_added(models.Model):
@@ -60,7 +58,5 @@ class Pereval_added(models.Model):
 
     user = models.ForeignKey(Users, on_delete=models.CASCADE)
     coords = models.OneToOneField(Coords, on_delete=models.CASCADE, default=None)
-    # ?????
-    # photos = models.ManyToManyField(Photo)
-    # photo = models.ForeignKey(Photo, on_delete=models.CASCADE)
+
 

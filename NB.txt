@@ -5,5 +5,86 @@ pip install djangorestframework
 python -m pip install Pillow
 pip install psycopg2-binary
 pip install drf-writable-nested
+
 pip install python-dotenv
+
+9
+# для проверки
+{
+    "photos": [
+        {
+        "data": "https://altaitg.ru/upload/medialibrary/f87/f87987866560658cad63c54eda6160db.jpg",
+        "title": "qwe"
+    },
+        {
+        "data": "https://altaitg.ru/upload/medialibrary/f87/f87987866560658cad63c54eda6160db.jpg",
+        "title": "qwe"
+    }
+    ],
+    "user": {
+        "email": "email@gmail.com",
+        "phone": 123123123,
+        "name": "qwe",
+        "patronimic": "qwe",
+        "last_name": "qwe"
+    },
+    "coords": {
+        "latitude": 23.23,
+        "longitude": 23.23,
+        "height": 2323
+    },
+    "beauty_title": "qwe",
+    "title": "qwe",
+    "other_titles": "wqe",
+    "connect": "qwe",
+    "winter_level": "1a",
+    "autumn_level": "1a",
+    "spring_level": "1a",
+    "summer_level": "1a",
+    "status": "new"
+}
+
+как выглядит:
+HTTP 201 Created
+Allow: POST, OPTIONS
+Content-Type: application/json
+Vary: Accept
+
+{
+    "id": 28,
+    "photos": [
+        {
+            "data": "https://altaitg.ru/upload/medialibrary/f87/f87987866560658cad63c54eda6160db.jpg",
+            "title": "qwe"
+        },
+        {
+            "data": "https://altaitg.ru/upload/medialibrary/f87/f87987866560658cad63c54eda6160db.jpg",
+            "title": "qwe"
+        }
+    ],
+    "user": {
+        "id": 37,
+        "email": "email@gmail.com",
+        "phone": 123123123,
+        "name": "qwe",
+        "patronimic": "qwe",
+        "last_name": "qwe"
+    },
+    "coords": {
+        "id": 39,
+        "latitude": 23.23,
+        "longitude": 23.23,
+        "height": 2323
+    },
+    "beauty_title": "qwe",
+    "title": "qwe",
+    "other_titles": "wqe",
+    "connect": "qwe",
+    "add_time": "2023-08-06T19:50:11.180347Z",
+    "winter_level": "1a",
+    "autumn_level": "1a",
+    "spring_level": "1a",
+    "summer_level": "1a",
+    "status": "new"
+}
 

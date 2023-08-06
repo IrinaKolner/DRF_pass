@@ -26,5 +26,6 @@ router.register(r'pereval', PerevalViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pereval.urls')),
+    # для проверки
     path('api/v1/', include(router.urls))
 ]
