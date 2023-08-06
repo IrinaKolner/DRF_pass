@@ -99,6 +99,7 @@ DATABASES = {
     }
 }
 
+# пусть пока полежит здесь
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
