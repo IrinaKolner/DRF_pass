@@ -87,27 +87,28 @@ WSGI_APPLICATION = 'Passes.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'HOST': os.getenv('FSTR_DB_HOST'),
-#         'PORT': os.getenv('FSTR_DB_PORT'),
-#         'NAME': 'passes',
-#         'USER': os.getenv('FSTR_DB_LOGIN'),
-#         'PASSWORD': os.getenv('FSTR_DB_PASS'),
-#     }
-# }
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'passes',
-        'USER': 'postgres',
-        'PASSWORD': 'password',
-        'HOST': '192.168.56.4',
+        'USER': os.getenv('FSTR_DB_LOGIN'),
+        'PASSWORD': os.getenv('FSTR_DB_PASS'),
+        'HOST': os.getenv('FSTR_DB_HOST'),
         'PORT': '5432',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'passes',
+#         'USER': 'postgres',
+#         'PASSWORD': 'password',
+#         'HOST': '192.168.56.4',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation
