@@ -61,10 +61,11 @@ class Pereval_addedSerializer(WritableNestedModelSerializer):
 
         return pereval
 
+
 # для проверки
 class PerevalSerializer(WritableNestedModelSerializer, serializers.ModelSerializer):
     coords = CoordsSerializer()
-    # photo = PhotoSerializer()
+    photos = PhotoSerializer(many=True)
     user = UserSerializer()
 
     class Meta:
