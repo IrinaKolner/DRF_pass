@@ -1,14 +1,17 @@
+import django_filters
 from rest_framework.response import Response
 from rest_framework import generics, viewsets
 from .models import Pereval_added
 from .serializers import Pereval_addedSerializer, PerevalSerializer
-import django_filters
 
 
 # submitData
-class Pereval_addedAPICreate(generics.CreateAPIView):
+# спр2 GET /submitData/?user__email=<email>
+class Pereval_addedAPICreate(generics.ListCreateAPIView):
     queryset = Pereval_added.objects.all()
     serializer_class = Pereval_addedSerializer
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
+    filterset_fields = ["user__email"]
 
 
 # спр2 - GET /submitData/<id>, PATCH /submitData/<id>
@@ -38,17 +41,11 @@ class PerevalOne(generics.RetrieveUpdateAPIView):
             return Response({"state": 0, "message": "Перевал не найден"}, status=404)
 
 
-# спр2 GET /submitData/?user__email=<email>
-class PerevalByUserEmailList(viewsets.ModelViewSet):
-    queryset = Pereval_added.objects.all()
-    serializer_class = Pereval_addedSerializer
-    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
-    filterset_fields = ["user__email"]
-
-
 # для проверки
 class PerevalViewSet(viewsets.ModelViewSet):
     queryset = Pereval_added.objects.all()
     serializer_class = PerevalSerializer
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
+    filterset_fields = ["user__email"]
 
 
