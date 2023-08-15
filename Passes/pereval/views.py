@@ -41,11 +41,10 @@ class PerevalOne(generics.RetrieveUpdateAPIView):
             return Response({"state": 0, "message": "Перевал не найден"}, status=404)
 
 
-# для проверки
+# тоже работает, но если PATCH, то редактирует все; passes/urls.py
 class PerevalViewSet(viewsets.ModelViewSet):
     queryset = Pereval_added.objects.all()
     serializer_class = PerevalSerializer
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
     filterset_fields = ["user__email"]
-
 
