@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from pereval.views import PerevalViewSet, Pereval_addedAPICreate
 from rest_framework import routers
+from django.views.generic import TemplateView
 
 router = routers.SimpleRouter()
 router.register(r'pereval', PerevalViewSet)
@@ -26,6 +27,11 @@ router.register(r'pereval', PerevalViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pereval.urls')),
+    path('swagger-ui/', TemplateView.as_view(
+        template_name='swagger-ui.html',
+        extra_context={'schema_url': 'openapi-schema'}
+    ), name='swagger-ui'),
+
     # для проверки
     path('api/v1/', include(router.urls))
 ]
