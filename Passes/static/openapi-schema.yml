@@ -45,7 +45,6 @@ paths:
       operationId: findPerevalsByEmail
       parameters:
         - name: email
-        # а точно ли query?
           in: query
           description: Для фильтрации нужна почта.
           required: true
@@ -195,7 +194,6 @@ components:
             - pending
             - accepted
             - rejected
-
         user:
           $ref: '#/components/schemas/User'
         coords:
